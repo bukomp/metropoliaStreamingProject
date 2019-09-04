@@ -1,7 +1,28 @@
-<html>
+<!DOCTYPE html>
     <head>
+        <meta charset="utf-8" />
         <title>Metropolia Streaming Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body></body>
-    <script></script>
+    <body>
+        <!-- I had to add id for the div, because WowzaPlayer doesn't accept classes. -->
+        <div id="playerElement1" style="width:100%; height:0; padding:0 0 56.25% 0"></div>
+    </body>
+    <script type="text/javascript" src="//player.wowza.com/player/latest/wowzaplayer.min.js"></script>
+    <script>
+            WowzaPlayer.create('playerElement1',
+          {
+            "license":"PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6",
+            "title":"GoCoder",
+            "description":"", "sourceURL":"http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2FvtStream%2Fplaylist.m3u8",
+            "autoPlay":false,
+            "volume":"75",
+            "mute":false,
+            "loop":false,
+            "audioOnly":false,
+            "uiShowQuickRewind":true,
+            "uiQuickRewindSeconds":"30"
+          }
+        );
+        </script>
 </html>
