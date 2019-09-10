@@ -21,7 +21,7 @@ const ws = new WebSocket("ws://localhost:3001/");
 
 ws.onopen = (evt) => {
   // Web Socket is connected
-  ws.send(JSON.stringify({message:"I am connected, please be gentle sempai UwU"}));
+  ws.send(JSON.stringify({message:"I am connected, please be gentle, sempai OwO"}));
 };
 
 ws.onmessage = (evt) => {
