@@ -1,0 +1,2 @@
+let viewsNow;
+let mostViewed;

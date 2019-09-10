@@ -1,19 +1,36 @@
-
 //configure address and port Web Socket to connect
 const ws = new WebSocket("ws://localhost:3001/");
 
-ws.onopen = () => {
+
+/* send message structure
+  {
+    message: "",
+    stream: integer or {new: integer, old: integer},
+    init: boolean
+  }
+ */
+
+/* receive message structure
+  {
+    message: ""
+    views: { ...streamName: int},
+    mostViews: "",
+  }
+*/
+
+
+ws.onopen = (evt) => {
   // Web Socket is connected
-  //ws.send("Message to send");
+  ws.send(JSON.stringify({message:"I am connected, please be gentle sempai UwU"}));
 };
 
 ws.onmessage = (evt) => {
   // When Web Socket receives message
-  /*const data = JSON.parse(evt.data)
-  data["stream1"]++
-  console.log(data["stream1"])
-*/
-  //console.log(evt.data);
+  console.log(evt.data);
+  const data = JSON.parse(evt.data)
+  viewsNow = data.views
+  mostViewed = data.mostViews
+  console.log(data);
 };
 
 ws.onclose = (evt) => {

@@ -1,4 +1,4 @@
-const server = require('./utility/webSocketServer').Server
+const server = require('./utility/wss').Server
 
 const PORT = 3001
 server.listen(PORT, () => {
