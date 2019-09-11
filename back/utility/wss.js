@@ -13,10 +13,13 @@ wss.on('connection', async ws => {
   ws.on('message', async m => {
     const message = JSON.parse(m);
     console.log(message);
+    if(message.init) {
+      const response = wsCC.view(message)
+      ws.send(response)
+    }
   })
 
 })
-
 
 module.exports = {
   wss,

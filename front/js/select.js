@@ -1,7 +1,8 @@
 function vaihto() {
-let x = document.getElementById("select").value;
+const x = document.getElementById("select").value;
 if (x === "playerElement1") {
-console.log("1")
+  viewsNow.stream = 1;
+  viewsNow.name = "vtStream"
 }else if (x === "playerElement2"){
   console.log("2")
 }else if (x === "playerElement3"){
