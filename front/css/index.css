@@ -1,3 +1,82 @@
-#playerElement1{
-    padding-bottom: 20px;
+body {
+background: deepskyblue;
+
 }
+
+button {
+    flex-wrap: wrap;
+
+}
+
+
+.container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+
+}
+
+
+#otsikko {
+
+}
+
+
+#playerElement1{
+
+    width: 80%;
+    height: 0;
+    padding: 10px 0 40% 10%;
+    position: relative;
+    margin-bottom: 20px;
+
+}
+
+#valikko {
+    box-sizing:border-box;
+    border: 1px solid;
+    border-radius: 3px;
+    height: 50px;
+    width: 35%;
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+    padding-left:10px;
+    margin-left: 10%;
+    float: left;
+    background-color: lightgrey;
+    padding-top: 10px;
+
+}
+
+#timetable {
+    box-sizing:border-box;
+    border: 1px solid;
+    border-radius: 3px;
+    height: 50px;
+    width: 40%;
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+    margin-left: 50%;
+    background-color: lightgrey;
+    text-align: center;
+
+}
+
+#description {
+    box-sizing:border-box;
+    border: 1px solid;
+    border-radius: 3px;
+    height: 50px;
+    width: 80%;
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+    margin-left: 10%;
+    background-color: lightgrey;
+    text-align: center;
+
+}
+

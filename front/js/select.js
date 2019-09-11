@@ -4,11 +4,14 @@ if (x === "playerElement1") {
   viewsNow.stream = 1;
   viewsNow.name = "vtStream"
 }else if (x === "playerElement2"){
-  console.log("2")
+  viewsNow.stream = 2;
+  viewsNow.name = "testi"
 }else if (x === "playerElement3"){
-  console.log("3")
+  viewsNow.stream = 3;
+  viewsNow.name = ""
 }else if (x === "playerElement4"){
-  console.log("4")
+  viewsNow.stream = 4;
+  viewsNow.name = ""
 }else {
   console.log("not working");
   console.log(x);
@@ -16,3 +19,10 @@ if (x === "playerElement1") {
 
 }
 
+function vastaus(){
+ let vastaus = {
+   message: "",
+   stream: integer or {new: integer, old: integer},
+   init: boolean
+ }
+}
