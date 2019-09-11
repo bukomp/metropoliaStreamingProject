@@ -4,10 +4,17 @@
     <meta charset="utf-8" />
     <title>Metropolia Streaming Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href=""
   </head>
 
   <body>
   <!-- I had to add id for the div, because WowzaPlayer doesn't accept classes. -->
+  <select id="select" onchange="vaihto()">
+    <option value="playerElement1">Stream</option>
+    <option value="playerElement2">Stream2</option>
+    <option value="playerElement3">Stream3</option>
+    <option value="playerElement4">Stream4</option>
+  </select>
   <div id="playerElement1" style="width:100%; height:0; padding:0 0 56.25% 0"></div>
   </body>
   <script type="text/javascript" src="//player.wowza.com/player/latest/wowzaplayer.min.js"></script>
@@ -15,7 +22,7 @@
     WowzaPlayer.create('playerElement1',
       {
         "license":"PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6",
-        "title":"GoCoder",
+        "title":"Ruutu",
         "description":"",
         "sourceURL":"http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2FvtStream%2Fplaylist.m3u8",
         "autoPlay":false,
@@ -27,9 +34,57 @@
         "uiQuickRewindSeconds":"30"
       }
     );
+
+    WowzaPlayer.create('playerElement2',
+            {
+              "license":"PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6",
+              "title":"Ruutu2",
+              "description":"",
+              "sourceURL":"http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2FvtStream%2Fplaylist.m3u8",
+              "autoPlay":false,
+              "volume":"75",
+              "mute":false,
+              "loop":false,
+              "audioOnly":false,
+              "uiShowQuickRewind":true,
+              "uiQuickRewindSeconds":"30"
+            }
+    );
+
+    WowzaPlayer.create('playerElement3',
+            {
+              "license":"PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6",
+              "title":"Ruutu3",
+              "description":"",
+              "sourceURL":"http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2FvtStream%2Fplaylist.m3u8",
+              "autoPlay":false,
+              "volume":"75",
+              "mute":false,
+              "loop":false,
+              "audioOnly":false,
+              "uiShowQuickRewind":true,
+              "uiQuickRewindSeconds":"30"
+            }
+    );
+
+    WowzaPlayer.create('playerElement4',
+            {
+              "license":"PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6",
+              "title":"Ruutu4",
+              "description":"",
+              "sourceURL":"http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2FvtStream%2Fplaylist.m3u8",
+              "autoPlay":false,
+              "volume":"75",
+              "mute":false,
+              "loop":false,
+              "audioOnly":false,
+              "uiShowQuickRewind":true,
+              "uiQuickRewindSeconds":"30"
+            }
+    );
   </script>
   <script  src="js/webSocketFont.js"></script>
   <script src="js/streamData.js"></script>
-
+  <script src="js/select.js"></script>
 
 </html>
