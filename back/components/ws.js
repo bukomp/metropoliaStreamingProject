@@ -1,7 +1,18 @@
 const db = require('../utility/jsonDb')
 
+const toJSON = async (message) => {
+
+  const data = await db.getData(`/`)
+
+  const rData = JSON.stringify({
+    views: data,
+    message: "Views has changed, please update 'views counter'" || message
+  })
+  return rData;
+}
+
 const getHValue = (o, n) => {
-  var keys = Object.keys(o);
+  let keys = Object.keys(o);
   keys.sort(function(a,b){
     return o[b] - o[a];
   })
@@ -12,6 +23,7 @@ const getHValue = (o, n) => {
 const initConnect = () => {
 
   const viewsNow = db.getData('/')
+  console.log(viewsNow, "I am here")
   const mostViews = getHValue(viewsNow, 1)[0];
 
   const data = JSON.stringify({
@@ -23,27 +35,34 @@ const initConnect = () => {
   return data;
 }
 
-const view = async (data) => {
-  const views = await db.getData(`/stream${data.stream}`)
-  if (data.init) await db.push(`/stream${data.stream}`, views + 1)
-  else {
-    await db.push(`/stream${data.stream.last}`, views - 1)
-    await db.push(`/stream${data.stream.new}`, views + 1)
-  }
-  const viewsNow = await db.getData(`/stream${data.stream}`)
+const initView = (data) => {
 
-  const rData = JSON.stringify({
-    views: viewsNow,
-    message: "Successfully switched"
-  })
-  return rData;
+  const views = db.getData(`/stream${data.stream}`)
+  db.push(`/stream${data.stream}`, views + 1)
+
+  return toJSON("this was initial connection, you have been added to viewer count")
 }
 
-const close = async () => {
-  return
+const view = (data) => {
+
+  const views = db.getData(`/stream${data.stream}`)
+  db.push(`/stream${data.stream.last}`, views - 1)
+  db.push(`/stream${data.stream.new}`, views + 1)
+
+  return toJSON()
+}
+
+const viewClose = (data) => {
+
+  const views = db.getData(`/stream${data.stream}`)
+  db.push(`/stream${data.stream}`, views - 1)
+
+  return toJSON()
 }
 
 module.exports = {
   initConnect,
-  view
+  view,
+  viewClose,
+  initView
 }
