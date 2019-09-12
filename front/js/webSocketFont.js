@@ -28,6 +28,11 @@ const jsonBuilder = (message, stream, init, close) => {
   })
 }
 
+const initConnection = (message, stream, init, close) => {
+  ws.send(jsonBuilder(message, stream, init, close))
+  viewingNow.init = true
+  updateViews()
+}
 
 ws.onopen = () => {
   // Web Socket is connected
@@ -42,6 +47,7 @@ ws.onmessage = (evt) => {
   console.log(data.message);
   viewDB = data.views
   if(data.mostViews)mostViewed = data.mostViews;
+  updateViews()
 };
 
 ws.onclose = (evt) => {
@@ -50,5 +56,5 @@ ws.onclose = (evt) => {
 };
 
 window.addEventListener("unload", () => {
-  ws.send(jsonBuilder("Sorry sempai, we can't be together anymore", viewingNow.stream, false, true))
+  if(viewingNow.init)ws.send(jsonBuilder("Sorry sempai, we can't be together anymore", viewingNow.stream, false, true))
 })
