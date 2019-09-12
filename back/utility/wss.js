@@ -7,18 +7,27 @@ const wss = new webSocket.Server({ server:Server });
 
 const wsCC = require('../components/ws')
 
-wss.on('connection', async ws => {
+wss.on('connection', ws => {
   ws.send(wsCC.initConnect())
-
+  console.log('Sempai, I connected, fill me with data RAWR :"3');
   ws.on('message', async m => {
     const message = JSON.parse(m);
     console.log(message);
     if(message.init) {
-      const response = wsCC.view(message)
+      const response = await wsCC.initView(message)
+      ws.send(response)
+    } else if (!message.init && message.close){
+      const response = await wsCC.viewClose(message)
+      ws.send(response)
+    } else {
+      const response = await wsCC.view(message)
       ws.send(response)
     }
   })
 
+  ws.on('close', async () => {
+    console.log("Connection Closed");
+  })
 })
 
 module.exports = {

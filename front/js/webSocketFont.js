@@ -7,6 +7,7 @@ const ws = new WebSocket("ws://localhost:3001/");
     message: "",
     stream: integer or {new: integer, old: integer},
     init: boolean
+    close: boolean
   }
  */
 
@@ -18,22 +19,36 @@ const ws = new WebSocket("ws://localhost:3001/");
   }
 */
 
+const jsonBuilder = (message, stream, init, close) => {
+  return JSON.stringify({
+    message,
+    stream,
+    init,
+    close
+  })
+}
 
-ws.onopen = (evt) => {
+
+ws.onopen = () => {
   // Web Socket is connected
-  ws.send(JSON.stringify({message:"I am connected, please be gentle, sempai OwO"}));
+  console.log("socket is open");
+  //ws.send(jsonBuilder('Sempai, I connected, fill me with data RAWR :"3', 1, true, false));
 };
 
 ws.onmessage = (evt) => {
   // When Web Socket receives message
-  console.log(evt.data);
   const data = JSON.parse(evt.data)
-  viewsNow = data.views
-  mostViewed = data.mostViews
   console.log(data);
+  console.log(data.message);
+  viewDB = data.views
+  if(data.mostViews)mostViewed = data.mostViews;
 };
 
 ws.onclose = (evt) => {
   console.log(evt);
   // websocket is closed.
 };
+
+window.addEventListener("unload", () => {
+  ws.send(jsonBuilder("Sorry sempai, we can't be together anymore", viewingNow.stream, false, true))
+})
