@@ -1,0 +1,36 @@
+@media (orientation: landscape) and (max-width: 700px) {
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+      background-color: red;
+    }
+
+    .containerDiv {
+        background-color: green;
+        width: calc(100vw - 1px);
+        height: calc(100vh - 57px);
+    }
+
+    .carousel {
+        background-color: blue;
+        width: calc(100vw - 4px);
+        height: calc(100vh - 60px);
+    }
+
+    .playerDiv {
+        height: 260px;
+    }
+
+    .slick-prev {
+        left: 0;
+    }
+
+    .slick-next {
+        right: 0;
+    }
+
+
+  }
