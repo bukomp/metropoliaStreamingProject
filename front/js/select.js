@@ -18,7 +18,7 @@ if (x === "playerElement1") {
 }
 
 }
-
+/*
 function vastaus(){
  let vastaus = {
    message: "",
@@ -26,3 +26,4 @@ function vastaus(){
    init: boolean
  }
 }
+*/

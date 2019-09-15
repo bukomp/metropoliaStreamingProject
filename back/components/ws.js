@@ -1,4 +1,5 @@
-const db = require('../utility/jsonDb')
+const db = require('../utility/jsonDb').db
+const printDB = require('../utility/jsonDb').printDB
 
 const toJSON = async (message) => {
 
@@ -45,9 +46,12 @@ const initView = (data) => {
 
 const view = (data) => {
 
-  const views = db.getData(`/stream${data.stream}`)
-  db.push(`/stream${data.stream.last}`, views - 1)
-  db.push(`/stream${data.stream.new}`, views + 1)
+  const views = {
+    new: db.getData(`/stream${data.stream.new}`),
+    old: db.getData(`/stream${data.stream.old}`)
+  }
+  db.push(`/stream${data.stream.old}`, views.old - 1)
+  db.push(`/stream${data.stream.new}`, views.new + 1)
 
   return toJSON()
 }
@@ -64,5 +68,6 @@ module.exports = {
   initConnect,
   view,
   viewClose,
-  initView
+  initView,
+  printDB
 }

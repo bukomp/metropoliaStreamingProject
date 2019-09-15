@@ -12,6 +12,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
 
     <link rel="stylesheet" type="text/css" href="./css/mobile.css">
+  <script src="js/webSocketFont.js"></script>
+  <script src="js/streamData.js"></script>
 </head>
 
 <body>
@@ -115,12 +117,15 @@
         // This console log prints the number of the carousel item {0,1,2,3} which is showing after the switching
         console.log(nextSlide, 'tämä on uusi');
 
-        const oldNew = (currentSlide, nextSlide) => {
-            //ws.send()
-            //const test = {old,new};
-        };
+        viewingNow.stream = nextSlide+1
+        const data2send = {
+            message: "I just changed slides, OwO",
+            stream: {new: viewingNow.stream, old: currentSlide+1},
+            init: viewingNow.init,
+            close: false
+          }
+        ws.send(JSON.stringify(data2send))
 
-        oldNew()
         switch (currentSlide) {
             case 0:
                 if (player1.getCurrentState() !== 4) {

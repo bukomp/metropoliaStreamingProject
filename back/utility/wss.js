@@ -9,24 +9,26 @@ const wsCC = require('../components/ws')
 
 wss.on('connection', ws => {
   ws.send(wsCC.initConnect())
-  console.log('Sempai, I connected, fill me with data RAWR :"3');
+  console.log("\n",'Sempai, I connected, fill me with data RAWR :"3');
   ws.on('message', async m => {
     const message = JSON.parse(m);
-    console.log(message);
-    if(message.init) {
+    console.log("\n",message);
+    if(!message.init) {
       const response = await wsCC.initView(message)
       ws.send(response)
-    } else if (!message.init && message.close){
+    } else if (message.init && message.close){
       const response = await wsCC.viewClose(message)
       ws.send(response)
     } else {
       const response = await wsCC.view(message)
       ws.send(response)
     }
+    wsCC.printDB()
   })
 
   ws.on('close', async () => {
-    console.log("Connection Closed");
+    console.log("\nConnection Closed");
+    wsCC.printDB()
   })
 })
 
