@@ -1,5 +1,5 @@
 body {
-background: deepskyblue;
+    background: deepskyblue;
 
 }
 
@@ -91,7 +91,7 @@ button {
 
 @media (max-width:590px){
     #valikko {
-       float: none;
+        float: none;
     }
 
 }
