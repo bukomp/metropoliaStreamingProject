@@ -41,25 +41,29 @@ const initView = (data) => {
   const views = db.getData(`/stream${data.stream}`)
   db.push(`/stream${data.stream}`, views + 1)
 
-  return toJSON("this was initial connection, you have been added to viewer count")
+  return toJSON()
 }
 
 const view = (data) => {
 
-  const views = {
-    new: db.getData(`/stream${data.stream.new}`),
-    old: db.getData(`/stream${data.stream.old}`)
+  if(data.stream.new <= 4) {
+    const New = db.getData(`/stream${data.stream.new}`)
+    db.push(`/stream${data.stream.new}`, New + 1)
   }
-  db.push(`/stream${data.stream.old}`, views.old - 1)
-  db.push(`/stream${data.stream.new}`, views.new + 1)
+
+  if(data.stream.old <= 4) {
+    const Old = db.getData(`/stream${data.stream.old}`)
+    db.push(`/stream${data.stream.old}`, Old - 1)
+  }
 
   return toJSON()
 }
 
 const viewClose = (data) => {
-
-  const views = db.getData(`/stream${data.stream}`)
-  db.push(`/stream${data.stream}`, views - 1)
+  if(data.stream <= 4) {
+    const views = db.getData(`/stream${data.stream}`)
+    db.push(`/stream${data.stream}`, views - 1)
+  }
 
   return toJSON()
 }
@@ -69,5 +73,6 @@ module.exports = {
   view,
   viewClose,
   initView,
-  printDB
+  printDB,
+  toJSON
 }
