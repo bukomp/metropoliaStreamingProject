@@ -9,14 +9,18 @@
     }
 
     .containerDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: green;
         width: calc(100vw - 1px);
         height: calc(100vh - 57px);
     }
 
     .carousel {
+        
         background-color: blue;
-        width: calc(100vw - 4px);
+        width: calc(100vw - 54px);
         height: calc(100vh - 60px);
     }
 
@@ -26,11 +30,43 @@
 
     .slick-prev {
         left: 0;
+        z-index: 1;
     }
 
     .slick-next {
         right: 0;
+        z-index: 1;
     }
 
+    .slick-prev, .slick-next {
+        width: 60px;
+        height: 60px;    
+    }
+        
+    .slick-prev:before, .slick-next:before {
+        font-size: 60px;
+    }
+
+    .timetable {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 260px;
+    }
+
+    .timetableContainer {
+
+    }
+
+    .otherInfo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 260px;
+    }
+
+    .otherInfoContainer {
+
+    }
 
   }

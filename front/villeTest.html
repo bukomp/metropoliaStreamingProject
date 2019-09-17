@@ -12,8 +12,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
 
     <link rel="stylesheet" type="text/css" href="./css/mobile.css">
-  <script src="js/webSocketFont.js"></script>
-  <script src="js/streamData.js"></script>
+    <script src="js/webSocketFont.js"></script>
+    <script src="js/streamData.js"></script>
 </head>
 
 <body>
@@ -24,6 +24,16 @@
             <div class="playerDiv" id="playerElement2"></div>
             <div class="playerDiv" id="playerElement3"></div>
             <div class="playerDiv" id="playerElement4"></div>
+            <div class="playerDiv">
+                <div class="timetable">
+                    <div class="timetableContainer">Aikataulu tulee tähän.</div>
+                </div>
+            </div>
+            <div class="playerDiv">
+                <div class="otherInfo">
+                    <div class="otherInfoContainer">Muuta infoa tulee tähän.</div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -35,11 +45,15 @@
 <script type="text/javascript" src="//player.wowza.com/player/latest/wowzaplayer.min.js"></script>
 <script>
 
+$(document).ready(function(){
     $('.carousel').slick({
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1
     });
+});
+
+    
 
     WowzaPlayer.create('playerElement1',
         {
@@ -117,13 +131,13 @@
         // This console log prints the number of the carousel item {0,1,2,3} which is showing after the switching
         console.log(nextSlide, 'tämä on uusi');
 
-        viewingNow.stream = nextSlide+1
+        viewingNow.stream = nextSlide + 1
         const data2send = {
             message: "I just changed slides, OwO",
-            stream: {new: viewingNow.stream, old: currentSlide+1},
+            stream: { new: viewingNow.stream, old: currentSlide + 1 },
             init: viewingNow.init,
             close: false
-          }
+        }
         ws.send(JSON.stringify(data2send))
 
         switch (currentSlide) {

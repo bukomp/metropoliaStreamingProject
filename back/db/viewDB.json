@@ -1,6 +1,8 @@
 {
-    "stream1": 0,
+    "stream1": 1,
     "stream2": 0,
     "stream3": 0,
-    "stream4": 0
+    "stream4": 1,
+    "stream5": 0,
+    "stream6": 0
 }
