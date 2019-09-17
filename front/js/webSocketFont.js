@@ -30,8 +30,10 @@ const jsonBuilder = (message, stream, init, close) => {
 
 const initConnection = (message, stream, init, close) => {
   ws.send(jsonBuilder(message, stream, init, close))
+  console.log(viewingNow);
+
   viewingNow.init = true
-  updateViews()
+  console.log(viewingNow);
 }
 
 ws.onopen = () => {
@@ -48,7 +50,7 @@ ws.onmessage = (evt) => {
   console.log(data.message);
   viewDB = data.views
   if(data.mostViews)mostViewed = data.mostViews;
-  updateViews()
+  if (viewingNow.init) updateViews()
 };
 
 ws.onclose = (evt) => {
@@ -59,3 +61,4 @@ ws.onclose = (evt) => {
 window.addEventListener("unload", () => {
   if(viewingNow.init)ws.send(jsonBuilder("Sorry sempai, we can't be together anymore", viewingNow.stream, viewingNow.init, true))
 })
+//window.addEventListener(r)

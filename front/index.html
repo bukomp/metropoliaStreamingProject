@@ -19,12 +19,14 @@
 
   <div id="playerElement1" ></div>
 
+  <h2 id="vCounter"><h2/>
+
   <wrapper id="wrap">
     <div id="valikko">
-      <button>Stream</button>
-      <button>Stream2</button>
-      <button>Stream3</button>
-      <button>Stream4</button>
+      <button id="stream1">Stream</button>
+      <button id="stream2">Stream2</button>
+      <button id="stream3">Stream3</button>
+      <button id="stream4">Stream4</button>
     </div>
   </wrapper>
 
@@ -41,8 +43,7 @@
 </body>
 
 <script type="text/javascript" src="//player.wowza.com/player/latest/wowzaplayer.min.js"></script>
-<script  src="js/webSocketFont.js"></script>
-<script src="js/streamData.js"></script>
+
 <script>
   WowzaPlayer.create('playerElement1',
           {
@@ -68,7 +69,7 @@
             "license":"PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6",
             "title":"Ruutu2",
             "description":"",
-            "sourceURL":`http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2F${viewingNow.name}%2Fplaylist.m3u8`,
+            "sourceURL":`http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2F%2Fplaylist.m3u8`,
             "autoPlay":false,
             "volume":"75",
             "mute":false,
@@ -112,6 +113,9 @@
   );
 </script>
 <script src="js/select.js"></script>
+<script src="js/streamData.js"></script>
+
+<script  src="js/webSocketFont.js"></script>
 <script src="js/viewCounter.js"></script>
 
 </html>

@@ -6,15 +6,15 @@ db.push('/stream1', 0);
 db.push('/stream2', 0);
 db.push('/stream3', 0);
 db.push('/stream4', 0);
-db.push('/stream5', 0);
-db.push('/stream6', 0);
 
 
 const printDB = () => {
   console.log("\n++++++ data base ++++++")
   console.log(db.getData("/"));
-  console.log("+++++++++++++++++++++++\n")
+  console.log("+++++++++++++++++++++++")
 }
+
+printDB()
 
 module.exports = {
   db,

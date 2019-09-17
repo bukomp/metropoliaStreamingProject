@@ -6,3 +6,4 @@ const viewingNow = {
   name:"",     //for example stream1
   init: false
 };
+
