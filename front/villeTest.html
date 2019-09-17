@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css" />
     <!-- Add the slick-theme.css if you want default styling -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/mobile.css">
     <script src="js/webSocketFont.js"></script>
     <script src="js/streamData.js"></script>
@@ -26,12 +26,42 @@
             <div class="playerDiv" id="playerElement4"></div>
             <div class="playerDiv">
                 <div class="timetable">
-                    <div class="timetableContainer">Aikataulu tulee tähän.</div>
+                    <div class="timetableContainer">
+                        <table>
+                            <tr>
+                                <td class="tdTime time1115">klo 09.00 - 11.15</td>
+                                <td class="tdText time1115">Tapahtumatorilla ohjelmaa</td>
+                            </tr>
+                            <tr>
+                                <td class="tdTime time1200">klo 11.30 - 12.00</td>
+                                <td class="tdText time1200">Avajaiset stadionilla</td>
+                            </tr>
+                            <tr>
+                                <td class="tdTime time1415">klo 12.15 - 14.15</td>
+                                <td class="tdText time1415">Tapahtumatorin ohjelma jatkuu</td>
+                            </tr>
+                            <tr>
+                                <td class="tdTime time1500">klo 14.15 - 15.00</td>
+                                <td class="tdText time1500">Useat pisteet avoinna kaikille</td>
+                            </tr>
+                            <tr>
+                                <td class="tdTime time1600">klo 15.00 - 16.00</td>
+                                <td class="tdText time1600">AKK Motorsportin piste vielä avoinna</td>
+                            </tr>
+                            <tr>
+                                <td class="tdTime time1600">klo 15.00 - 16.00</td>
+                                <td class="tdText time1600">Luisteluliiton piste vielä avoinna</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
+
             <div class="playerDiv">
                 <div class="otherInfo">
-                    <div class="otherInfoContainer">Muuta infoa tulee tähän.</div>
+                    <div class="otherInfoContainer">
+                        <img src="https://flockler.com/thumbs/11263/espoo-liikkuu-sininen-nosto_s624x0_q80_noupscale.png"
+                            alt="Espoo liikkuu logo"></div>
                 </div>
             </div>
         </div>
@@ -45,15 +75,15 @@
 <script type="text/javascript" src="//player.wowza.com/player/latest/wowzaplayer.min.js"></script>
 <script>
 
-$(document).ready(function(){
-    $('.carousel').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1
+    $(document).ready(function () {
+        $('.carousel').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
     });
-});
 
-    
+
 
     WowzaPlayer.create('playerElement1',
         {
@@ -130,6 +160,64 @@ $(document).ready(function(){
 
         // This console log prints the number of the carousel item {0,1,2,3} which is showing after the switching
         console.log(nextSlide, 'tämä on uusi');
+
+        if (nextSlide === 4) {
+            const myDate = new Date();
+            // FOR TESTING
+            console.warn('####### MYDATE is: ', myDate);
+
+            // Here are the date-time strings of the timetable events
+
+            //'2019-09-23T11:15Z'
+            //'2019-09-23T12:00Z'
+            //'2019-09-23T14:15Z'
+            //'2019-09-23T15:00Z'
+            //'2019-09-23T16:00Z'
+            //'2019-09-23T16:00Z'
+
+            // Date type variables for comparing
+            const time1115 = new Date('2019-09-23T11:15Z');
+            const time1200 = new Date('2019-09-23T12:00Z');
+            const time1415 = new Date('2019-09-23T14:15Z');
+            const time1500 = new Date('2019-09-23T15:00Z');
+            const time1600 = new Date('2019-09-23T16:00Z');
+
+            // FOR TESTING
+            console.log(time1115);
+
+            if (myDate > time1115) {
+                const time1115DOM = document.querySelectorAll('.time1115');
+                time1115DOM[0].style.textDecoration = "line-through";
+                time1115DOM[1].style.textDecoration = "line-through";
+            }
+
+            if (myDate > time1200) {
+                const time1200DOM = document.querySelectorAll('.time1200');
+                time1200DOM[0].style.textDecoration = "line-through";
+                time1200DOM[1].style.textDecoration = "line-through";
+            }
+
+            if (myDate > time1415) {
+                const time1415DOM = document.querySelectorAll('.time1415');
+                time1415DOM[0].style.textDecoration = "line-through";
+                time1415DOM[1].style.textDecoration = "line-through";
+            }
+
+            if (myDate > time1500) {
+                const time1500DOM = document.querySelectorAll('.time1500');
+                time1500DOM[0].style.textDecoration = "line-through";
+                time1500DOM[1].style.textDecoration = "line-through";
+            }
+
+            if (myDate > time1600) {
+                const time1600DOM = document.querySelectorAll('.time1600');
+                time1600DOM[0].style.textDecoration = "line-through";
+                time1600DOM[1].style.textDecoration = "line-through";
+                time1600DOM[2].style.textDecoration = "line-through";
+                time1600DOM[3].style.textDecoration = "line-through";
+            }
+
+        }
 
         viewingNow.stream = nextSlide + 1
         const data2send = {
